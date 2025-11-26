@@ -3,9 +3,11 @@ import { BookingForm } from '@/components/booking-form';
 import { mockUser } from '@/lib/data';
 import { Clock, Globe } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { useParams } from 'react-router-dom';
 
-export default function BookingPage({ params }: { params: { user: string } }) {
-  // In a real app, you'd fetch user data based on params.user
+export default function BookingPage() {
+  const { user: username } = useParams(); // params.user 대신 hook 사용
+  // In a real app, you'd fetch user data based on username
   const user = mockUser;
 
   return (

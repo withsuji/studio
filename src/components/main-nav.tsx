@@ -1,6 +1,4 @@
-'use client';
-
-import { usePathname } from 'next/navigation';
+import { useLocation, Link as RouterLink } from 'react-router-dom';
 import {
   Calendar,
   Clock,
@@ -44,7 +42,8 @@ const links = [
 ];
 
 export function MainNav() {
-  const pathname = usePathname();
+  const location = useLocation();
+  const pathname = location.pathname;
 
   return (
     <SidebarMenu>
@@ -55,10 +54,10 @@ export function MainNav() {
             isActive={pathname === link.href}
             tooltip={link.label}
           >
-            <a href={link.href}>
+            <RouterLink to={link.href}>
               <link.icon />
               <span>{link.label}</span>
-            </a>
+            </RouterLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}
